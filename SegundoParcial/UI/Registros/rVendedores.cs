@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SegundoParcial.BLL;
 using SegundoParcial.Entidades;
 
 namespace SegundoParcial.UI.Registros
 {
     public partial class rVendedores : Form
     {
+
+        private RepositorioBase<Vendedores> repositorio;
         public rVendedores()
         {
             InitializeComponent();
@@ -52,12 +55,12 @@ namespace SegundoParcial.UI.Registros
 
         }
 
-       /* private bool ExisteEnLaBaseDeDatos()
+        private bool ExisteEnLaBaseDeDatos()
         {
-            Vendedores vendedor = VendedoresBLL.Buscar((int)IDnumericUpDown.Value)
-
-            return (vendedor != null);
-        }*/
+            repositorio = new RepositorioBase<Vendedores>();
+            Vendedores vendedores = repositorio.Buscar((int)IDnumericUpDown.Value);
+            return (vendedores != null);
+        }
 
 
         private bool Validar(int validar)
@@ -93,13 +96,14 @@ namespace SegundoParcial.UI.Registros
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
+            repositorio = new RepositorioBase<Vendedores>();
             int id;
             Vendedores vendedor = new Vendedores();
             int.TryParse(IDnumericUpDown.Text, out id);
 
             Limpiar();
 
-            vendedor = VendedoresBLL.Buscar(id);
+            vendedor = repositorio.Buscar(id);
 
             if (vendedor != null)
             {
@@ -119,7 +123,7 @@ namespace SegundoParcial.UI.Registros
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
-
+            repositorio = new RepositorioBase<Vendedores>();
             Vendedores vendedor;
             bool paso = false;
 
@@ -133,7 +137,7 @@ namespace SegundoParcial.UI.Registros
             Limpiar();
 
             if (IDnumericUpDown.Value == 0)
-                paso = VendedoresBLL.Guardar(vendedor);
+                paso = repositorio.Guardar(vendedor);
             else
             {
                 if (!ExisteEnLaBaseDeDatos())
@@ -141,7 +145,7 @@ namespace SegundoParcial.UI.Registros
                     MessageBox.Show("No se puede modificar un vendedor que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                paso = BLL.VendedoresBLL.Modificar(vendedor);
+                paso = repositorio.Modificar(vendedor);
             }
 
             if (paso)
@@ -152,6 +156,7 @@ namespace SegundoParcial.UI.Registros
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
+            repositorio = new RepositorioBase<Vendedores>();
             errorProvider.Clear();
 
             if (Validar(1))
@@ -162,7 +167,7 @@ namespace SegundoParcial.UI.Registros
 
             int id = Convert.ToInt32(IDnumericUpDown.Value);
 
-            if (BLL.VendedoresBLL.Eliminar(id))
+            if (repositorio.Eliminar(id))
                 MessageBox.Show("Eliminado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("No se pudo eliminar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
