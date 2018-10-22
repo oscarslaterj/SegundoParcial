@@ -32,12 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rVendedores));
             this.label6 = new System.Windows.Forms.Label();
             this.FechadateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.PorcRetencionnumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.RetencionnumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.SueldonumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.NombrestextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,17 +41,23 @@
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.PorcRetencionnumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RetencionnumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SueldonumericUpDown)).BeginInit();
+            this.MetascomboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.AgregarButton = new System.Windows.Forms.Button();
+            this.DetalledataGridView = new System.Windows.Forms.DataGridView();
+            this.RemoverButton = new System.Windows.Forms.Button();
+            this.CuotanumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CuotanumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 196);
+            this.label6.Location = new System.Drawing.Point(211, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 31;
@@ -67,65 +67,10 @@
             // 
             this.FechadateTimePicker.CustomFormat = "dd/MM/yyyy";
             this.FechadateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.FechadateTimePicker.Location = new System.Drawing.Point(79, 196);
+            this.FechadateTimePicker.Location = new System.Drawing.Point(276, 12);
             this.FechadateTimePicker.Name = "FechadateTimePicker";
             this.FechadateTimePicker.Size = new System.Drawing.Size(120, 20);
             this.FechadateTimePicker.TabIndex = 30;
-            // 
-            // PorcRetencionnumericUpDown
-            // 
-            this.PorcRetencionnumericUpDown.Location = new System.Drawing.Point(79, 125);
-            this.PorcRetencionnumericUpDown.Name = "PorcRetencionnumericUpDown";
-            this.PorcRetencionnumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.PorcRetencionnumericUpDown.TabIndex = 29;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 127);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Retencion %";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Retencion";
-            // 
-            // RetencionnumericUpDown
-            // 
-            this.RetencionnumericUpDown.Location = new System.Drawing.Point(79, 160);
-            this.RetencionnumericUpDown.Name = "RetencionnumericUpDown";
-            this.RetencionnumericUpDown.ReadOnly = true;
-            this.RetencionnumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.RetencionnumericUpDown.TabIndex = 26;
-            // 
-            // SueldonumericUpDown
-            // 
-            this.SueldonumericUpDown.DecimalPlaces = 2;
-            this.SueldonumericUpDown.Location = new System.Drawing.Point(79, 91);
-            this.SueldonumericUpDown.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.SueldonumericUpDown.Name = "SueldonumericUpDown";
-            this.SueldonumericUpDown.Size = new System.Drawing.Size(120, 20);
-            this.SueldonumericUpDown.TabIndex = 25;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Sueldo";
             // 
             // NombrestextBox
             // 
@@ -161,9 +106,10 @@
             // 
             // Eliminarbutton
             // 
+            this.Eliminarbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Eliminarbutton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Eliminarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Eliminarbutton.Image")));
-            this.Eliminarbutton.Location = new System.Drawing.Point(276, 234);
+            this.Eliminarbutton.Location = new System.Drawing.Point(276, 328);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(103, 50);
             this.Eliminarbutton.TabIndex = 19;
@@ -174,9 +120,10 @@
             // 
             // Guardarbutton
             // 
+            this.Guardarbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Guardarbutton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Guardarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Guardarbutton.Image")));
-            this.Guardarbutton.Location = new System.Drawing.Point(145, 234);
+            this.Guardarbutton.Location = new System.Drawing.Point(145, 328);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(103, 50);
             this.Guardarbutton.TabIndex = 18;
@@ -187,9 +134,10 @@
             // 
             // Nuevobutton
             // 
+            this.Nuevobutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Nuevobutton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Nuevobutton.Image = ((System.Drawing.Image)(resources.GetObject("Nuevobutton.Image")));
-            this.Nuevobutton.Location = new System.Drawing.Point(17, 234);
+            this.Nuevobutton.Location = new System.Drawing.Point(17, 328);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(103, 50);
             this.Nuevobutton.TabIndex = 17;
@@ -203,7 +151,7 @@
             this.Buscarbutton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Buscarbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.BackgroundImage")));
             this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
-            this.Buscarbutton.Location = new System.Drawing.Point(289, -2);
+            this.Buscarbutton.Location = new System.Drawing.Point(429, 2);
             this.Buscarbutton.Name = "Buscarbutton";
             this.Buscarbutton.Size = new System.Drawing.Size(103, 44);
             this.Buscarbutton.TabIndex = 16;
@@ -216,20 +164,82 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // MetascomboBox
+            // 
+            this.MetascomboBox.FormattingEnabled = true;
+            this.MetascomboBox.Location = new System.Drawing.Point(17, 107);
+            this.MetascomboBox.Name = "MetascomboBox";
+            this.MetascomboBox.Size = new System.Drawing.Size(121, 21);
+            this.MetascomboBox.TabIndex = 32;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(55, 91);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "Metas";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(194, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Cuota";
+            // 
+            // AgregarButton
+            // 
+            this.AgregarButton.Location = new System.Drawing.Point(321, 107);
+            this.AgregarButton.Name = "AgregarButton";
+            this.AgregarButton.Size = new System.Drawing.Size(120, 23);
+            this.AgregarButton.TabIndex = 36;
+            this.AgregarButton.Text = "Agregar";
+            this.AgregarButton.UseVisualStyleBackColor = true;
+            // 
+            // DetalledataGridView
+            // 
+            this.DetalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DetalledataGridView.Location = new System.Drawing.Point(8, 134);
+            this.DetalledataGridView.Name = "DetalledataGridView";
+            this.DetalledataGridView.Size = new System.Drawing.Size(536, 150);
+            this.DetalledataGridView.TabIndex = 37;
+            // 
+            // RemoverButton
+            // 
+            this.RemoverButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.RemoverButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.RemoverButton.Location = new System.Drawing.Point(435, 290);
+            this.RemoverButton.Name = "RemoverButton";
+            this.RemoverButton.Size = new System.Drawing.Size(109, 23);
+            this.RemoverButton.TabIndex = 38;
+            this.RemoverButton.Text = "Remover filas";
+            this.RemoverButton.UseVisualStyleBackColor = false;
+            // 
+            // CuotanumericUpDown
+            // 
+            this.CuotanumericUpDown.Location = new System.Drawing.Point(197, 108);
+            this.CuotanumericUpDown.Name = "CuotanumericUpDown";
+            this.CuotanumericUpDown.Size = new System.Drawing.Size(107, 20);
+            this.CuotanumericUpDown.TabIndex = 39;
+            // 
             // rVendedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(467, 295);
+            this.ClientSize = new System.Drawing.Size(556, 390);
+            this.Controls.Add(this.CuotanumericUpDown);
+            this.Controls.Add(this.RemoverButton);
+            this.Controls.Add(this.DetalledataGridView);
+            this.Controls.Add(this.AgregarButton);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.MetascomboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.FechadateTimePicker);
-            this.Controls.Add(this.PorcRetencionnumericUpDown);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.RetencionnumericUpDown);
-            this.Controls.Add(this.SueldonumericUpDown);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.NombrestextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -240,11 +250,10 @@
             this.Controls.Add(this.Buscarbutton);
             this.Name = "rVendedores";
             this.Text = "rVendedores";
-            ((System.ComponentModel.ISupportInitialize)(this.PorcRetencionnumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RetencionnumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SueldonumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CuotanumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,12 +263,6 @@
 
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker FechadateTimePicker;
-        private System.Windows.Forms.NumericUpDown PorcRetencionnumericUpDown;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown RetencionnumericUpDown;
-        private System.Windows.Forms.NumericUpDown SueldonumericUpDown;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox NombrestextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -269,5 +272,12 @@
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button RemoverButton;
+        private System.Windows.Forms.DataGridView DetalledataGridView;
+        private System.Windows.Forms.Button AgregarButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox MetascomboBox;
+        private System.Windows.Forms.NumericUpDown CuotanumericUpDown;
     }
 }

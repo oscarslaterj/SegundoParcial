@@ -25,9 +25,6 @@ namespace SegundoParcial.UI.Registros
         {
             IDnumericUpDown.Value = 0;
             NombrestextBox.Text = string.Empty;
-            SueldonumericUpDown.Value = 0;
-            PorcRetencionnumericUpDown.Value = 0;
-            RetencionnumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now;
         }
 
@@ -37,9 +34,6 @@ namespace SegundoParcial.UI.Registros
             Vendedores vendedor = new Vendedores();
             vendedor.VendedorId = Convert.ToInt32(IDnumericUpDown.Value);
             vendedor.Nombres = NombrestextBox.Text;
-            vendedor.Sueldo = Convert.ToInt32(SueldonumericUpDown.Value);
-            vendedor.PorcRetencion = Convert.ToInt32(PorcRetencionnumericUpDown.Value);
-            vendedor.Retencion = Convert.ToInt32(RetencionnumericUpDown.Value);
             vendedor.Fecha = FechadateTimePicker.Value;
             return vendedor;
         }
@@ -48,9 +42,6 @@ namespace SegundoParcial.UI.Registros
         {
             IDnumericUpDown.Value = vendedor.VendedorId;
             NombrestextBox.Text = vendedor.Nombres;
-            SueldonumericUpDown.Value = vendedor.Sueldo;
-            PorcRetencionnumericUpDown.Value = vendedor.PorcRetencion;
-            RetencionnumericUpDown.Value = vendedor.Retencion;
             FechadateTimePicker.Value = vendedor.Fecha;
 
         }
@@ -76,21 +67,18 @@ namespace SegundoParcial.UI.Registros
                 errorProvider.SetError(NombrestextBox, "digite los nombres");
                 paso = true;
             }
-            if (validar == 2 && SueldonumericUpDown.Value == 0)
+            if (validar == 2 && CuotanumericUpDown.Value == 0)
             {
-                errorProvider.SetError(SueldonumericUpDown, "Ingrese Sueldo");
+                errorProvider.SetError(CuotanumericUpDown, "Cuota");
                 paso = true;
+
+                if (validar == 2 && string.IsNullOrWhiteSpace(MetascomboBox.Text))
+                {
+                    errorProvider.SetError(MetascomboBox, "Campo esta vacio");
+                    paso = false;
+                }
             }
-            if (validar == 2 && PorcRetencionnumericUpDown.Value == 0)
-            {
-                errorProvider.SetError(PorcRetencionnumericUpDown, "Ingrese el Porciento de retencion");
-                paso = true;
-            }
-            if (validar == 2 && RetencionnumericUpDown.Value == 0)
-            {
-                errorProvider.SetError(RetencionnumericUpDown, "Ingrese retencion");
-                paso = true;
-            }
+            
             return paso;
         }
 

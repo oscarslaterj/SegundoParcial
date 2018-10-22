@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using SegundoParcial.DAL;
+using SegundoParcial.Entidades;
 
 namespace SegundoParcial.BLL
 {
@@ -101,6 +102,27 @@ namespace SegundoParcial.BLL
         {
             _contexto.Dispose();
         }
+
+
+        public static List<Vendedores> GetList(Expression<Func<Vendedores, bool>> persona)
+        {
+            List<Vendedores> Lista = new List<Vendedores>();
+            Contexto db = new Contexto();
+            try
+            {
+                Lista = db.Vendedores.Where(persona).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return Lista;
+        }
+
 
     }
 }
