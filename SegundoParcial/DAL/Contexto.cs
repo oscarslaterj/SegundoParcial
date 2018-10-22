@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SegundoParcial.Entidades;
 
-namespace PrimerParcial.DAL
+namespace SegundoParcial.DAL
 {
     public class Contexto : DbContext
     {
