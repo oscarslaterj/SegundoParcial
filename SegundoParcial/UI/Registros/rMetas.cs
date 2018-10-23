@@ -48,7 +48,7 @@ namespace SegundoParcial.UI.Registros
             {
                 MetaID = Convert.ToInt32(MetaIDNumericUpDown.Value),
                 Descripcion = DescripcionTextBox.Text,
-                Cuotas = Convert.ToDecimal(CuotaNumericUpDown.Value)
+                Cuotas = Convert.ToInt64(CuotaNumericUpDown.Value)
             };
             return meta;
         }

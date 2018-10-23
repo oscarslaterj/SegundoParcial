@@ -183,20 +183,17 @@ namespace SegundoParcial.UI.Registros
         private void AgregarButton_Click(object sender, EventArgs e)
         {
             if (DetalleDataGridView.DataSource != null)
-                this.Detalle = (List<MetasDetalle>)DetalleDataGridView.DataSource;
-
+                Detalle = (List<MetasDetalle>)DetalleDataGridView.DataSource;
             this.Detalle.Add(
-                new MetasDetalle(
-
-                 metaid:  0,
-                 metaid: MetasComboBox,
-                 cuotas: Convert.ToDecimal(CuotanumericUpDown.Value)
-                 
-                )
-            );
+           new MetasDetalle
+           (
+             metaid: 0,
+             descripcion: NombrestextBox.Text,
+             cuotas: (float)CuotanumericUpDown.Value
+            )
+               );
             CargarGrid();
-            MetasComboBox.Focus();
-            MetasComboBox.Items.Clear();
+
         }
 
 
@@ -212,7 +209,6 @@ namespace SegundoParcial.UI.Registros
         private void LlenarComboBox()
         {
             RepositorioBase<MetasDetalle> repositorio = new RepositorioBase<MetasDetalle>();
-            MetasComboBox.DataSource = repositorio.GetList(x => true);
             MetasComboBox.ValueMember = "Descripcion";
         }
 
