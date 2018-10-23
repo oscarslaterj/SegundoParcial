@@ -24,11 +24,5 @@ namespace SegundoParcial.Entidades
         }
 
        
-        public MetasDetalle(int v, int idMeta, string nombres, decimal cuotas, string descripcion)
-        {
-            Cuotas = cuotas;
-            Descripcion = descripcion;
-            
-        }
     }
 }

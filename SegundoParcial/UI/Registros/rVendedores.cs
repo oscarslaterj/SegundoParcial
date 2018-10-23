@@ -187,14 +187,12 @@ namespace SegundoParcial.UI.Registros
 
             this.Detalle.Add(
                 new MetasDetalle(
-                    id = 0,
-                    idMeta: (int)IDnumericUpDown.Value,
-                    nombres : NombrestextBox.Text,
-                    cuotas: CuotanumericUpDown.Value,
-                     descripcion : MetasComboBox.Text
+                   
+             
                 )
             );
             CargarGrid();
+            MetasComboBox.Focus();
             MetasComboBox.Items.Clear();
         }
 
@@ -209,8 +207,9 @@ namespace SegundoParcial.UI.Registros
 
         private void LlenarComboBox()
         {
-            
-            MetasComboBox.ValueMember = "Metas";
+            RepositorioBase<MetasDetalle> repositorio = new RepositorioBase<MetasDetalle>();
+            //MetasComboBox.DataSource = repositorio.GetList(x => true);
+            MetasComboBox.ValueMember = "Descripcion";
         }
 
         private void Plusbutton_Click(object sender, EventArgs e)
