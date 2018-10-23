@@ -51,6 +51,11 @@ namespace SegundoParcial.BLL
             return paso;
         }
 
+        internal bool Guardar(MetasDetalle tipo)
+        {
+            throw new NotImplementedException();
+        }
+
         public T Buscar(int id)
         {
             T entity;

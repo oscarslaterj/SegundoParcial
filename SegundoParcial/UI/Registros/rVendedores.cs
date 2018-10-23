@@ -14,6 +14,10 @@ namespace SegundoParcial.UI.Registros
 {
     public partial class rVendedores : Form
     {
+        private int id;
+
+        public List<MetasDetalle> Detalle { get; set; }
+       
 
         private RepositorioBase<Vendedores> repositorio;
         public rVendedores()
@@ -26,6 +30,10 @@ namespace SegundoParcial.UI.Registros
             IDnumericUpDown.Value = 0;
             NombrestextBox.Text = string.Empty;
             FechadateTimePicker.Value = DateTime.Now;
+            CuotanumericUpDown.Value = 0;
+            MetasComboBox.Text = string.Empty;
+            this.Detalle = new List<MetasDetalle>();
+            CargarGrid();
         }
 
 
@@ -35,6 +43,7 @@ namespace SegundoParcial.UI.Registros
             vendedor.VendedorId = Convert.ToInt32(IDnumericUpDown.Value);
             vendedor.Nombres = NombrestextBox.Text;
             vendedor.Fecha = FechadateTimePicker.Value;
+            vendedor.metas = this.Detalle;
             return vendedor;
         }
 
@@ -43,7 +52,10 @@ namespace SegundoParcial.UI.Registros
             IDnumericUpDown.Value = vendedor.VendedorId;
             NombrestextBox.Text = vendedor.Nombres;
             FechadateTimePicker.Value = vendedor.Fecha;
+            CuotanumericUpDown.Value = vendedor.Cuota;
 
+            this.Detalle = vendedor.metas;
+            CargarGrid();
         }
 
         private bool ExisteEnLaBaseDeDatos()
@@ -51,6 +63,12 @@ namespace SegundoParcial.UI.Registros
             repositorio = new RepositorioBase<Vendedores>();
             Vendedores vendedores = repositorio.Buscar((int)IDnumericUpDown.Value);
             return (vendedores != null);
+        }
+
+        private void CargarGrid()
+        {
+            DetalleDataGridView.DataSource = null;
+            DetalleDataGridView.DataSource = this.Detalle;
         }
 
 
@@ -72,9 +90,9 @@ namespace SegundoParcial.UI.Registros
                 errorProvider.SetError(CuotanumericUpDown, "Cuota");
                 paso = true;
 
-                if (validar == 2 && string.IsNullOrWhiteSpace(MetascomboBox.Text))
+                if (validar == 2 && string.IsNullOrWhiteSpace(MetasComboBox.Text))
                 {
-                    errorProvider.SetError(MetascomboBox, "Campo esta vacio");
+                    errorProvider.SetError(MetasComboBox, "Campo esta vacio");
                     paso = false;
                 }
             }
@@ -160,6 +178,45 @@ namespace SegundoParcial.UI.Registros
             else
                 MessageBox.Show("No se pudo eliminar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Limpiar();
+        }
+
+        private void AgregarButton_Click(object sender, EventArgs e)
+        {
+            if (DetalleDataGridView.DataSource != null)
+                this.Detalle = (List<MetasDetalle>)DetalleDataGridView.DataSource;
+
+            this.Detalle.Add(
+                new MetasDetalle(
+                    id = 0,
+                    idMeta: (int)IDnumericUpDown.Value,
+                    nombres : NombrestextBox.Text,
+                    cuotas: CuotanumericUpDown.Value,
+                     descripcion : MetasComboBox.Text
+                )
+            );
+            CargarGrid();
+            MetasComboBox.Items.Clear();
+        }
+
+        private void RemoverButton_Click(object sender, EventArgs e)
+        {
+            if (DetalleDataGridView.Rows.Count > 0 && DetalleDataGridView.CurrentRow != null)
+            {
+                Detalle.RemoveAt(DetalleDataGridView.CurrentRow.Index);
+                CargarGrid();
+            }
+        }
+
+        private void LlenarComboBox()
+        {
+            
+            MetasComboBox.ValueMember = "Metas";
+        }
+
+        private void Plusbutton_Click(object sender, EventArgs e)
+        {
+            rMetas registroMetas = new rMetas();
+            registroMetas.ShowDialog();
         }
     }
 }

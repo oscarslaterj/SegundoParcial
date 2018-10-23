@@ -41,16 +41,17 @@
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.MetascomboBox = new System.Windows.Forms.ComboBox();
+            this.MetasComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.AgregarButton = new System.Windows.Forms.Button();
-            this.DetalledataGridView = new System.Windows.Forms.DataGridView();
+            this.DetalleDataGridView = new System.Windows.Forms.DataGridView();
             this.RemoverButton = new System.Windows.Forms.Button();
             this.CuotanumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.Plusbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CuotanumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,13 +165,13 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // MetascomboBox
+            // MetasComboBox
             // 
-            this.MetascomboBox.FormattingEnabled = true;
-            this.MetascomboBox.Location = new System.Drawing.Point(17, 107);
-            this.MetascomboBox.Name = "MetascomboBox";
-            this.MetascomboBox.Size = new System.Drawing.Size(121, 21);
-            this.MetascomboBox.TabIndex = 32;
+            this.MetasComboBox.FormattingEnabled = true;
+            this.MetasComboBox.Location = new System.Drawing.Point(17, 107);
+            this.MetasComboBox.Name = "MetasComboBox";
+            this.MetasComboBox.Size = new System.Drawing.Size(121, 21);
+            this.MetasComboBox.TabIndex = 32;
             // 
             // label3
             // 
@@ -198,14 +199,15 @@
             this.AgregarButton.TabIndex = 36;
             this.AgregarButton.Text = "Agregar";
             this.AgregarButton.UseVisualStyleBackColor = true;
+            this.AgregarButton.Click += new System.EventHandler(this.AgregarButton_Click);
             // 
-            // DetalledataGridView
+            // DetalleDataGridView
             // 
-            this.DetalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DetalledataGridView.Location = new System.Drawing.Point(8, 134);
-            this.DetalledataGridView.Name = "DetalledataGridView";
-            this.DetalledataGridView.Size = new System.Drawing.Size(536, 150);
-            this.DetalledataGridView.TabIndex = 37;
+            this.DetalleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DetalleDataGridView.Location = new System.Drawing.Point(8, 134);
+            this.DetalleDataGridView.Name = "DetalleDataGridView";
+            this.DetalleDataGridView.Size = new System.Drawing.Size(536, 150);
+            this.DetalleDataGridView.TabIndex = 37;
             // 
             // RemoverButton
             // 
@@ -217,6 +219,7 @@
             this.RemoverButton.TabIndex = 38;
             this.RemoverButton.Text = "Remover filas";
             this.RemoverButton.UseVisualStyleBackColor = false;
+            this.RemoverButton.Click += new System.EventHandler(this.RemoverButton_Click);
             // 
             // CuotanumericUpDown
             // 
@@ -225,19 +228,30 @@
             this.CuotanumericUpDown.Size = new System.Drawing.Size(107, 20);
             this.CuotanumericUpDown.TabIndex = 39;
             // 
+            // Plusbutton
+            // 
+            this.Plusbutton.Location = new System.Drawing.Point(145, 108);
+            this.Plusbutton.Name = "Plusbutton";
+            this.Plusbutton.Size = new System.Drawing.Size(27, 23);
+            this.Plusbutton.TabIndex = 40;
+            this.Plusbutton.Text = "+";
+            this.Plusbutton.UseVisualStyleBackColor = true;
+            this.Plusbutton.Click += new System.EventHandler(this.Plusbutton_Click);
+            // 
             // rVendedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(556, 390);
+            this.Controls.Add(this.Plusbutton);
             this.Controls.Add(this.CuotanumericUpDown);
             this.Controls.Add(this.RemoverButton);
-            this.Controls.Add(this.DetalledataGridView);
+            this.Controls.Add(this.DetalleDataGridView);
             this.Controls.Add(this.AgregarButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.MetascomboBox);
+            this.Controls.Add(this.MetasComboBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.FechadateTimePicker);
             this.Controls.Add(this.NombrestextBox);
@@ -252,7 +266,7 @@
             this.Text = "rVendedores";
             ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalleDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CuotanumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,11 +287,12 @@
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button RemoverButton;
-        private System.Windows.Forms.DataGridView DetalledataGridView;
+        private System.Windows.Forms.DataGridView DetalleDataGridView;
         private System.Windows.Forms.Button AgregarButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox MetascomboBox;
+        private System.Windows.Forms.ComboBox MetasComboBox;
         private System.Windows.Forms.NumericUpDown CuotanumericUpDown;
+        private System.Windows.Forms.Button Plusbutton;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.MetaID = new System.Windows.Forms.Label();
             this.MetaIDNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -35,8 +36,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.CuotaNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.GuardarButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MetaIDNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CuotaNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // MetaID
@@ -96,8 +99,13 @@
             this.GuardarButton.TabIndex = 6;
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
-            // rCuota
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // rMetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,10 +118,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MetaIDNumericUpDown);
             this.Controls.Add(this.MetaID);
-            this.Name = "rCuota";
+            this.Name = "rMetas";
             this.Text = "rCuota";
             ((System.ComponentModel.ISupportInitialize)(this.MetaIDNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CuotaNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +137,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown CuotaNumericUpDown;
         private System.Windows.Forms.Button GuardarButton;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
