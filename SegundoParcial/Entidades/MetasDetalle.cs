@@ -23,6 +23,10 @@ namespace SegundoParcial.Entidades
             Cuotas = 0;
         }
 
-       
+       public MetasDetalle(int metaid, decimal cuotas)
+        {
+            MetaID = metaid;
+            Cuotas = cuotas;
+        }
     }
 }

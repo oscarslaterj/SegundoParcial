@@ -187,14 +187,18 @@ namespace SegundoParcial.UI.Registros
 
             this.Detalle.Add(
                 new MetasDetalle(
-                   
-             
+
+                 metaid:  0,
+                 metaid: MetasComboBox,
+                 cuotas: Convert.ToDecimal(CuotanumericUpDown.Value)
+                 
                 )
             );
             CargarGrid();
             MetasComboBox.Focus();
             MetasComboBox.Items.Clear();
         }
+
 
         private void RemoverButton_Click(object sender, EventArgs e)
         {
