@@ -212,7 +212,7 @@ namespace SegundoParcial.UI.Registros
         private void LlenarComboBox()
         {
             RepositorioBase<MetasDetalle> repositorio = new RepositorioBase<MetasDetalle>();
-            //MetasComboBox.DataSource = repositorio.GetList(x => true);
+            MetasComboBox.DataSource = repositorio.GetList(x => true);
             MetasComboBox.ValueMember = "Descripcion";
         }
 
