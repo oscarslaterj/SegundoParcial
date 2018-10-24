@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SegundoParcial.BLL;
+using SegundoParcial.DAL;
 using SegundoParcial.Entidades;
 
 namespace SegundoParcial.UI.Registros
@@ -21,23 +22,42 @@ namespace SegundoParcial.UI.Registros
             InitializeComponent();
         }
 
+        public void LLenarCampo(MetasDetalle meta)
+        {
+            MetaIDNumericUpDown.Value = meta.MetaID;
+            DescripcionTextBox.Text = meta.Descripcion;
+            CuotaNumericUpDown.Value = Convert.ToDecimal(meta.Cuotas);
+        }
+
+
         private void GuardarButton_Click(object sender, EventArgs e)
         {
             repositorio = new RepositorioBase<Vendedores>();
             bool paso = false;
-            MetasDetalle tipo;
-            if (!Validar())
-                return;
-            tipo= LlenaClase();
-
-            if (MetaIDNumericUpDown.Value == 0)
-                paso = repositorio.Guardar(tipo);
+            MetasDetalle meta;
+            Contexto contexto = new Contexto();
 
 
-            if (paso)
-                MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("No se pudo guardar!!", "fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            meta = LlenaClase();
+            try
+            {
+                if (MetaIDNumericUpDown.Value == 0)
+                    paso = repositorio.Guardar(meta);
+
+                if (paso)
+                {
+                    MessageBox.Show("Se Guardo Exitosamente", "Imformacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("No se Guardo!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            };
         }
 
 
@@ -48,7 +68,7 @@ namespace SegundoParcial.UI.Registros
             {
                 MetaID = Convert.ToInt32(MetaIDNumericUpDown.Value),
                 Descripcion = DescripcionTextBox.Text,
-                Cuotas = Convert.ToInt64(CuotaNumericUpDown.Value)
+                Cuotas = Convert.ToDecimal(CuotaNumericUpDown.Value)
             };
             return meta;
         }

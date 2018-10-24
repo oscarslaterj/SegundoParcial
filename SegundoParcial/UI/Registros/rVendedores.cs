@@ -189,7 +189,7 @@ namespace SegundoParcial.UI.Registros
            (
              metaid: 0,
              descripcion: NombrestextBox.Text,
-             cuotas: (float)CuotanumericUpDown.Value
+             cuotas: (decimal)CuotanumericUpDown.Value
             )
                );
             CargarGrid();
